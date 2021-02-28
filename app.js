@@ -259,17 +259,18 @@ function get_all_questions(req, res) {
 
 
 function add_new_question(req, res) {
-    Question.find({question: req.body.question}, function(err, foundQuestion){
-        if (!foundQuestion){
-            Question.create(req.body, function(err, doc){
-                if (!err){
-                    res.send(doc);
-                } else {
-                    res.status(400).send("could not create a question");
-                };
-            });
+  console.log("I am here");
+    Question.findOne({question: req.body.question}, function(err, foundQuestion){
+        if (foundQuestion){
+          res.status(400).send("Alredy exist");
         } else {
-            res.status(400).send("Alredy exist");
+          Question.create(req.body, function(err, doc){
+              if (!err){
+                  res.send(doc);
+              }else {
+                  res.status(400).send("could not create a question");
+              };
+          });
         }
     })
 };
