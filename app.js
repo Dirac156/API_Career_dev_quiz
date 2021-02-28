@@ -31,7 +31,7 @@ function create_new_obj(obj) {
 const db_password = process.env.ATLAS_PASSWORD;
 const db_name = process.env.ATLAS_NAME; 
 
-mongoose.connect(`mongodb+srv://admin-admin:diracALA1@cluster0.3nywu.mongodb.net/HangCareer`, {
+mongoose.connect("mongodb+srv://admin-dirac:diracALA1@cluster0.3nywu.mongodb.net/Career-dev-quiz", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -259,13 +259,19 @@ function get_all_questions(req, res) {
 
 
 function add_new_question(req, res) {
-    Question.create(req.body, function(err, doc){
-        if (!err){
-            res.send(doc);
+    Question.find({question: req.body.question}, function(err, foundQuestion){
+        if (!foundQuestion){
+            Question.create(req.body, function(err, doc){
+                if (!err){
+                    res.send(doc);
+                } else {
+                    res.status(400).send("could not create a question");
+                };
+            });
         } else {
-            res.status(400).send("could not create a question");
-        };
-    });
+            res.status(400).send("Alredy exist");
+        }
+    }) 
 };
 
 
