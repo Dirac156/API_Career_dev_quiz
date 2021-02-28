@@ -1,13 +1,13 @@
 import requests
 import json
 
-# users_url = "https://api-career-dev-quizz.herokuapp.com/users"
-# questions = "https://api-career-dev-quizz.herokuapp.com/questions"
-# login = "https://api-career-dev-quizz.herokuapp.com/login"
+users_url = "https://api-career-dev-quizz.herokuapp.com/users"
+questions = "https://api-career-dev-quizz.herokuapp.com/questions"
+login = "https://api-career-dev-quizz.herokuapp.com/login"
 
-users_url = "http://localhost:3000/users"
-questions = "http://localhost:3000/questions"
-login = "http://localhost:3000/login"
+# users_url = "http://localhost:3000/users"
+# questions = "http://localhost:3000/questions"
+# login = "http://localhost:3000/login"
 
 
 def check_status_code(res):
