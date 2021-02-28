@@ -19,76 +19,76 @@ def check_status_code(res):
 
 
 #get all users
-r = requests.get(url = users_url)
-
-check_status_code(r)
-
-
-#get_one_user
-
-r = requests.get(url= users_url + "/d.murairi@alustudent.com")
-check_status_code(r)
-
-
-#create new user
-new_user = {"first_name" : "dirac",
-    "last_name" : "murairi mukongya",
-    "email" : "d.murairi@alustudent.com",
-    "password" : "iamdirac",
-    "user_classification": "student",
-    "faculty" : "computer science",
-    "promotion" : "2",
-    "level" : 0,
-    "score" : 0
-}
-r = requests.post(url=users_url, data=new_user)
-if r.status_code == 200:
-    print("added new element")
-elif r.status_code == 400:
-    print("user allready exist")
-
-## create a administrator
-
-new_administrator = {
-    "first_name" : "dirac",
-    "last_name" : "murairi mukongya",
-    "email" : "diracm8@gmail.com",
-    "password" : "iamdirac",
-    "user_classification": "administrator",
-}
-
-r = requests.post(url=users_url, data=new_administrator)
-if r.status_code == 200:
-    print("added new element")
-elif r.status_code == 400:
-    print("user allready exist")
-else:
-    print("Nothing")
-
-
-#update one
-new_user_update = {"first_name" : "dirac",
-    "last_name" : "murairi mukongya",
-    "email" : "d.murairi@alustudent.com",
-    "password" : "iamdirac",
-    "user_classification": "student",
-    "faculty" : "computer science",
-    "promotion" : "2",
-    "level" : 0,
-    "score" : 0
-}
-
-r = requests.put(users_url + "/d.murairi@alustudent.com", data = new_user_update)
-if r.status_code == 200:
-    print(r.json())
-else:
-    print("could not update")
-
-
-login
-r = requests.get(login, data = {"email" : "d.murairi@alustudent.com", "password" : "iamdirac"})
-
-check_status_code(r)
+# r = requests.get(url = users_url)
+#
+# check_status_code(r)
+#
+#
+# #get_one_user
+#
+# r = requests.get(url= users_url + "/d.murairi@alustudent.com")
+# check_status_code(r)
+#
+#
+# #create new user
+# new_user = {"first_name" : "dirac",
+#     "last_name" : "murairi mukongya",
+#     "email" : "d.murairi@alustudent.com",
+#     "password" : "iamdirac",
+#     "user_classification": "student",
+#     "faculty" : "computer science",
+#     "promotion" : "2",
+#     "level" : 0,
+#     "score" : 0
+# }
+# r = requests.post(url=users_url, data=new_user)
+# if r.status_code == 200:
+#     print("added new element")
+# elif r.status_code == 400:
+#     print("user allready exist")
+#
+# ## create a administrator
+#
+# new_administrator = {
+#     "first_name" : "dirac",
+#     "last_name" : "murairi mukongya",
+#     "email" : "diracm8@gmail.com",
+#     "password" : "iamdirac",
+#     "user_classification": "administrator",
+# }
+#
+# r = requests.post(url=users_url, data=new_administrator)
+# if r.status_code == 200:
+#     print("added new element")
+# elif r.status_code == 400:
+#     print("user allready exist")
+# else:
+#     print("Nothing")
+#
+#
+# #update one
+# new_user_update = {"first_name" : "dirac",
+#     "last_name" : "murairi mukongya",
+#     "email" : "d.murairi@alustudent.com",
+#     "password" : "iamdirac",
+#     "user_classification": "student",
+#     "faculty" : "computer science",
+#     "promotion" : "2",
+#     "level" : 0,
+#     "score" : 0
+# }
+#
+# r = requests.put(users_url + "/d.murairi@alustudent.com", data = new_user_update)
+# if r.status_code == 200:
+#     print(r.json())
+# else:
+#     print("could not update")
+#
+#
+# login
+# r = requests.get(login, data = {"email" : "d.murairi@alustudent.com", "password" : "iamdirac"})
+#
+# check_status_code(r)
 
 
 # r = requests.delete(users_url, data=new_user_update)
@@ -99,7 +99,7 @@ topic_data = {
     "question": "It's important to list out your email address in a professional way on a resume.\nWhich is the best email here assuming your name is 'Jane Smith'",
     "level": 1,
     "weight": 1,
-    "options": ["janesmith@gmail.com", "thatgirljay@gmail.com"], 
+    "options": ["janesmith@gmail.com", "thatgirljay@gmail.com"],
     "answer": 1
 }
 

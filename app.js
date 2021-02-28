@@ -71,7 +71,7 @@ const questionSchema = mongoose.Schema({
         required: false
     },
     answer: {
-        type: String,
+        type: Number,
         reuired: true
     }
 })
