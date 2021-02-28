@@ -29,7 +29,7 @@ function create_new_obj(obj) {
 }
 
 const db_password = process.env.ATLAS_PASSWORD;
-const db_name = process.env.ATLAS_NAME; 
+const db_name = process.env.ATLAS_NAME;
 
 mongoose.connect("mongodb+srv://admin-dirac:diracALA1@cluster0.3nywu.mongodb.net/Career-dev-quiz", {
     useNewUrlParser: true,
@@ -66,7 +66,7 @@ const questionSchema = mongoose.Schema({
         type: [],
         required: false
     },
-    choices: {
+    options: {
         type: [],
         required: false
     },
@@ -271,7 +271,7 @@ function add_new_question(req, res) {
         } else {
             res.status(400).send("Alredy exist");
         }
-    }) 
+    })
 };
 
 
