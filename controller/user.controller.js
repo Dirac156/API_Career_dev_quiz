@@ -65,22 +65,21 @@ export function add_new_user(req, res) {
 /////////////// update one user //////////////
 
 export function update_one_user(req, res, param) {
-    let new_data = create_new_obj(req.body);
-    bcrypt.hash(req.body.password, saltRounds, function (err, hash) {
-        User.findOneAndUpdate({
-                email: param
-            },
-            new_data, {
-                new: true
-            },
-            function (err, doc) {
-                if (doc) {
-                    res.status(200).send(doc);
-                } else {
-                    res.status(400).send("didn't update");
-                };
-            });
-    });
+    // let new_data = create_new_obj(req.body);
+    let new_data = req.body;
+    User.findOneAndUpdate({
+            email: param
+        },
+        new_data, {
+            new: true
+        },
+        function (err, doc) {
+            if (doc) {
+                res.status(200).send(doc);
+            } else {
+                res.status(400).send("didn't update");
+            };
+        });
 };
 
 
@@ -94,7 +93,7 @@ export function login(req, res) {
     }, function (err, foundUser) {
         if (foundUser) {
             bcrypt.compare(password, foundUser.password, function (err, result) {
-                if (result){
+                if (result) {
                     res.send(foundUser);
                 } else {
                     res.status(500).send("Incorrect password");
