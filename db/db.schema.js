@@ -11,10 +11,6 @@ export const questionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    level: {
-        type: Number,
-        required: true
-    },
     weight: {
         type: Number,
         required: true
@@ -34,11 +30,11 @@ export const questionSchema = mongoose.Schema({
 })
 
 export const userSchema = mongoose.Schema({
-    first_name: {
+    firstName: {
         type: String,
         required: true
     },
-    last_name: {
+    lastName: {
         type: String,
         required: true
     },
@@ -50,31 +46,23 @@ export const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    user_classification: {
+    userClassification: {
         type: String,
         required: true
     },
-    faculty: {
+    rank: {
         type: String,
         required: false
-    },
-    promotion: {
-        type: String,
-        required: false
-    },
-    level: {
-        type: Number,
-        required: false,
-        min: 0,
-        max: 3
     },
     score: {
         type: Number,
         required: false,
-        min: 0,
-        max: 100
     },
-    question_answered: {
+    numberOfQuestionsAnswered: {
+        type: Number,
+        requred: false,
+    },
+    questionAnswered: {
         type: [questionSchema],
         required: false
     }

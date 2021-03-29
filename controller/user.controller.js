@@ -37,8 +37,8 @@ export function add_new_user(req, res) {
         req.body.password = hash;
         if (!err) {
             User.findOne({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 email: req.body.email
             }, function (err, foundUser) {
                 if (foundUser) {
@@ -66,11 +66,10 @@ export function add_new_user(req, res) {
 
 export function update_one_user(req, res, param) {
     // let new_data = create_new_obj(req.body);
-    let new_data = req.body;
     User.findOneAndUpdate({
             email: param
         },
-        new_data, {
+        req.body, {
             new: true
         },
         function (err, doc) {
@@ -107,8 +106,8 @@ export function login(req, res) {
 
 export function delete_one_user(req, res) {
     User.findOneAndRemove({
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email
     }, function (err, doc) {
         if (doc) {
@@ -118,3 +117,5 @@ export function delete_one_user(req, res) {
         };
     });
 }
+
+
