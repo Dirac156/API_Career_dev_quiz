@@ -13,18 +13,11 @@ export function get_all_questions(req, res) {
 
 
 export function add_new_question(req, res) {
-  console.log("I am here");
-    Question.findOne({question: req.body.question}, function(err, foundQuestion){
-        if (foundQuestion){
-          res.status(400).send("Alredy exist");
-        } else {
-          Question.create(req.body, function(err, doc){
-              if (doc){
-                  res.send(doc);
-              }else {
-                  res.status(400).json({message: "could not create a question"});
-              };
-          });
-        }
-    })
+    Question.create(req.body, function(err, doc){
+        if (doc){
+            res.send(doc);
+        }else {
+            res.status(400).json({message: "could not create a question"});
+        };
+    });
 };
