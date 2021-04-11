@@ -18,6 +18,19 @@ export function get_all_users(req, res) {
     });
 }
 
+export function getUserByClassification(req, res, param) {
+    User.find({
+        userClassification: param
+    }, function (err, foundUser) {
+        console.log(param);
+        if (foundUser) {
+            res.send(foundUser);
+        } else {
+            res.status(404).send("No user found");
+        };
+    });
+}
+
 
 export function get_one_user(req, res, param) {
     User.findOne({
@@ -27,7 +40,7 @@ export function get_one_user(req, res, param) {
         if (foundUser) {
             res.send(foundUser);
         } else {
-            res.status(404).send("No article found");
+            res.status(404).send("No user found");
         };
     });
 }

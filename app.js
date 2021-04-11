@@ -5,7 +5,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 
 import { get_all_users, get_one_user, login, add_new_user, 
-    update_one_user, delete_one_user} from "./controller/user.controller.js";
+    update_one_user, delete_one_user, getUserByClassification} from "./controller/user.controller.js";
 
 import { get_all_questions, add_new_question } from "./controller/question.controller.js";
 
@@ -33,6 +33,9 @@ app.route("/users")
 app.route("/users/:specific_user")
     .get((req, res) => get_one_user(req, res, req.params.specific_user))
     .put((req, res) => update_one_user(req, res, req.params.specific_user))
+
+app.route("/users/all/:userClassification")
+    .get((req, res) => getUserByClassification(req, res, req.params.userClassification));
 
 app.route("/questions")
     .get((req, res) => get_all_questions(req, res))
